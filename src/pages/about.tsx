@@ -34,7 +34,7 @@ const About: NextPage = () => {
           {data.name}
         </Typography>
         <Box maxWidth="sm">
-          <Button variant="contained" component={Link} noLinkStyle href="/">
+          <Button variant="contained" color="secondary" component={Link} noLinkStyle href="/">
             Go to the home page
           </Button>
         </Box>

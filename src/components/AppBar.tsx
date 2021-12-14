@@ -98,7 +98,7 @@ export default function AppBarLeft(props: { children: any; }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component={Link} noLinkStyle href="/">
+          <Typography variant="h6" component={Link} noLinkStyle href="/" style={{ textDecoration: 'none' }}>
             React App
           </Typography>
         </Toolbar>
