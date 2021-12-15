@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Link from '../components/Link';
 
@@ -10,8 +11,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
-import IganaImage from '../image/igana_image.jpeg';
-
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -42,12 +41,23 @@ function ActionAreaCard(props: {people: any}) {
   );
 }
 
-
 const Home: NextPage = () => {
   const { data, error } = useSWR('/api/people', fetcher)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
+
+  const postNewRecord = async(): Promise<void> => {
+    const response = await fetch('/api/people', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      }
+    })
+    return response.json()
+  }
 
   return (
     <Container>
@@ -64,11 +74,19 @@ const Home: NextPage = () => {
           People
         </Typography>
         {
-          data.map((people: any, index: any) => {
-            return (
-              <ActionAreaCard key={index} people={people} />
-            )
-          })
+          data.length > 0 ?
+            data.map((people: any, index: any) => {
+              return (
+                <ActionAreaCard key={index} people={people} />
+              )
+            })
+            : 
+            <>
+              <Typography>
+                There are no people!
+              </Typography>
+              <Button sx={{ m: 1 }} variant="contained" onClick={ () => postNewRecord() }>Add Record!</Button>
+            </>
         }
         <Box sx={{ display: { xs: 'none', sm: 'block' } }} component={Link} noLinkStyle href="/about">
           Go to the about page

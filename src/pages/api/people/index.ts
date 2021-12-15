@@ -7,10 +7,26 @@ type Data = {
   age: string;
 };
 
+type Person = {
+  name: string;
+  age: string;
+}
+
 const prisma = new PrismaClient();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data[]|null>) {
-  const people = await prisma.person.findMany()
-  
-  res.status(200).json(people);
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data[]|null|Person>) {
+  if (req.method === 'POST') {
+    const post = await prisma.person.create({
+      data: {
+        name: 'Ed',
+        age: '13',
+      }
+    })
+
+    res.status(200).json(post);
+  } else {
+    const people = await prisma.person.findMany()
+
+    res.status(200).json(people);
+  }
 }

@@ -28,7 +28,9 @@ const About: NextPage = () => {
     const response = await fetch(url)
     const data = await response.json()
     
-    setResponseText(data);
+    if (data.length > 0) {
+      setResponseText(data);
+    }
   }
 
   return (
@@ -47,9 +49,9 @@ const About: NextPage = () => {
         </Typography>
         <RenderNames persons={responseText} />
         <Box maxWidth="sm">
-          <Button variant="contained" color="secondary" component={Link} noLinkStyle href="/">
-            Go to the home page
-          </Button>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }} component={Link} noLinkStyle href="/">
+            Go to the about page
+          </Box>
           <Button variant="contained" color="secondary" onClick={() => getAboutInfo('/api/people/about')} style={{ marginLeft: '4px' }}>
             Hi Team Button
           </Button>
