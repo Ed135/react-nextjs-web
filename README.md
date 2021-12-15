@@ -16,6 +16,26 @@ To lint:
 npm run lint
 ```
 
+## Primsa Database Setup
+
+Model creation happens in the schema.prisma file.
+
+To migrate:
+
+```sh
+npx prisma migrate dev
+```
+
+### *Configure the SQLITE EXPLORER (vscode)*
+
+*command + shift + p > SQLITE open database > select dev.db*
+
+### Open SQLite in browser
+
+```sh
+npx prisma studio
+```
+
 ## The link component
 
 Next.js has [a custom Link component](https://nextjs.org/docs/api-reference/next/link).
