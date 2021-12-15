@@ -27,7 +27,7 @@ const About: NextPage = () => {
   const getAboutInfo = async(url: string): Promise<void> => {
     const response = await fetch(url)
     const data = await response.json()
-    
+
     if (data.length > 0) {
       setResponseText(data);
     }
@@ -45,7 +45,7 @@ const About: NextPage = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
+          This is my about page
         </Typography>
         <RenderNames persons={responseText} />
         <Box maxWidth="sm">

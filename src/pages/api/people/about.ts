@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 export default async function aboutHandler(req: NextApiRequest, res: NextApiResponse<Data|Data[]|null>) {
   const person = await prisma.person.findMany({
     where: {
-      name: 'Maya',
+      name: 'Ed'
     }
   })
 
