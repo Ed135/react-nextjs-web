@@ -85,7 +85,7 @@ export default function AppBarLeft(props: { children: any; }) {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: { xs: 'none', sm: 'flex' }}}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>

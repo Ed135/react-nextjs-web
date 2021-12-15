@@ -6,8 +6,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../styles/theme';
 import createEmotionCache from '../utils/createEmotionCache';
-import StickyFooter from '../components/Footer';
 import AppBarLeft from '../components/AppBar';
+import FixedBottomNavigation from '../components/MobileAppBar';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -30,8 +30,10 @@ export default function MyApp(props: MyAppProps) {
         <AppBarLeft>
           <Component {...pageProps} />
         </AppBarLeft>
+        <FixedBottomNavigation>
+          <Component {...pageProps} />
+        </FixedBottomNavigation>
       </ThemeProvider>
-      <StickyFooter />
     </CacheProvider>
   );
 }
