@@ -1,20 +1,20 @@
 import * as React from 'react';
-import useSWR from 'swr'
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Link from '../components/Link';
-import handler from './api/people';
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const About: NextPage = () => {
-  const { data, error } = useSWR('/api/people/about', fetcher)
-
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  const [responseText, setResponseText] = React.useState({name: ""})  
+  
+  const getAboutInfo = async(url: string): Promise<void> => {
+    const response = await fetch('/api/people/about')
+    const data = await response.json()
+    
+    setResponseText(data);
+  }
 
   return (
     <Container maxWidth="lg">
@@ -31,11 +31,14 @@ const About: NextPage = () => {
           MUI v5 + Next.js with TypeScript example
         </Typography>
         <Typography variant="h5" gutterBottom>
-          {data.name}
+          {responseText.name}
         </Typography>
         <Box maxWidth="sm">
           <Button variant="contained" color="secondary" component={Link} noLinkStyle href="/">
             Go to the home page
+          </Button>
+          <Button variant="contained" color="secondary" onClick={() => getAboutInfo('/api/people/about')} style={{ marginLeft: '4px' }}>
+            Hi Team Button
           </Button>
         </Box>
       </Box>
