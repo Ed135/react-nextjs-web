@@ -30,11 +30,11 @@ const Home: NextPage = () => {
         </Typography>
         <Rating name="simple-controlled" value={5} />
         <Typography style={{ margin: '10% 0 0 0' }}>
-          <i>Ioana's friend said she loved it!</i>
+          <i>Ioanas friend said she loved it!</i>
         </Typography>
         <Rating name="simple-controlled" value={5} />
         <Typography style={{ margin: '10% 0 0 0' }}>
-          <i>Ioana's other friend said she loved it!</i>
+          <i>Ioanas other friend said she loved it!</i>
         </Typography>
         <Rating name="simple-controlled" value={5} />
         <Box sx={{ display: { xs: 'none', sm: 'block' } }} component={Link} noLinkStyle href="/about">
