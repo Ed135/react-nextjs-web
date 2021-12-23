@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const post = await supabase
       .from('players')
       .insert([
-        {name: 'Ed Bieda', age: '12312'}
+        req.body
       ])      
 
     res.status(200).json(post);
