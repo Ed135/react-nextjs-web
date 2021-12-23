@@ -15,7 +15,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
-    "@prisma/client": "^3.6.0",
+    "@supabase/supabase-js": "^1.29.1",
     "next": "latest",
     "node-fetch": "^3.1.0",
     "react": "latest",
@@ -26,7 +26,6 @@
     "@types/react": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "prisma": "^3.6.0",
     "typescript": "latest"
   }
 }

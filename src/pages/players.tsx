@@ -42,13 +42,13 @@ function ActionAreaCard(props: {people: any}) {
 }
 
 const Players: NextPage = () => {
-  const { data, error } = useSWR('/api/people', fetcher)
+  const { data, error } = useSWR('/api/players', fetcher)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
   const postNewRecord = async(): Promise<void> => {
-    const response = await fetch('/api/people', {
+    const response = await fetch('/api/players', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -73,8 +73,8 @@ const Players: NextPage = () => {
           People
         </Typography>
         {
-          data.length > 0 ?
-            data.map((people: any, index: any) => {
+          data.data.length > 0 ?
+            data.data.map((people: any, index: any) => {
               return (
                 <ActionAreaCard key={index} people={people} />
               )

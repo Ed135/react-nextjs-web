@@ -7,29 +7,24 @@ import Button from '@mui/material/Button';
 import Link from '../components/Link';
 
 function RenderNames(props: any) {
-  const { persons } = props;
+  const { info } = props;
 
-  if (persons.length > 0) {
-    return (
-      persons.map((person: { name: string | null ; age: string | null ; }, index: React.Key) => {
-          return (
-            <Typography key={index} variant="h5" gutterBottom>
-              {person.name} - {person.age}
-            </Typography>
-      )})
-    )
-  }
+  return (
+    <Typography variant="h5" gutterBottom>
+      {info.name} - {info.age}
+    </Typography>
+  )
 }
 
 const Info: NextPage = () => {
-  const [responseText, setResponseText] = React.useState([{name: "", age: ""}])  
+  const [responseText, setResponseText] = React.useState({name: "", age: ""})  
   
   const getAboutInfo = async(url: string): Promise<void> => {
     const response = await fetch(url)
     const data = await response.json()
 
-    if (data.length > 0) {
-      setResponseText(data);
+    if (data.status == 200) {
+      setResponseText(data.data);
     }
   }
 
@@ -47,12 +42,12 @@ const Info: NextPage = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           This is my about page
         </Typography>
-        <RenderNames persons={responseText} />
+        <RenderNames info={responseText} />
         <Box maxWidth="sm">
           <Box sx={{ display: { xs: 'none', sm: 'block' } }} component={Link} noLinkStyle href="/">
             Go to the about page
           </Box>
-          <Button variant="contained" color="secondary" onClick={() => getAboutInfo('/api/people/about')} style={{ marginLeft: '4px' }}>
+          <Button variant="contained" color="secondary" onClick={() => getAboutInfo('/api/info')} style={{ marginLeft: '4px' }}>
             Hi Team Button
           </Button>
         </Box>
