@@ -3,8 +3,10 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleIcon from '@mui/icons-material/People';
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import Paper from '@mui/material/Paper';
 import Link from '../components/Link';
 
@@ -26,8 +28,10 @@ export default function FixedBottomNavigation(props: { children: any}) {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<RestoreIcon />} component={Link} href="/" />
-          <BottomNavigationAction label="About" icon={<FavoriteIcon />} component={Link} href="/about" />
+          <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} href="/" />
+          <BottomNavigationAction label="Players" icon={<PeopleIcon />} component={Link} href="/players" />
+          <BottomNavigationAction label="Games" icon={<VideogameAssetIcon />} component={Link} href="/about" />
+          <BottomNavigationAction label="Info" icon={<HelpCenterIcon />} component={Link} href="/info" />
         </BottomNavigation>
       </Paper>
     </Box>

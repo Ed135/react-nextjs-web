@@ -1,64 +1,12 @@
 import * as React from 'react';
-import useSWR from 'swr'
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Link from '../components/Link';
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
-
-function ActionAreaCard(props: {people: any}) {
-  const { name, age } = props.people;
-
-  return (
-    <Card sx={{ maxWidth: 300, m: 1 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/igana_image.jpeg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {name} are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica, with an age
-            of: {age}.
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
-}
-
 const Home: NextPage = () => {
-  const { data, error } = useSWR('/api/people', fetcher)
-
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
-
-  const postNewRecord = async(): Promise<void> => {
-    const response = await fetch('/api/people', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      }
-    })
-    return response.json()
-  }
-
   return (
     <Container>
       <Box
@@ -71,23 +19,24 @@ const Home: NextPage = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          People
+          <b>Rentz</b>
         </Typography>
-        {
-          data.length > 0 ?
-            data.map((people: any, index: any) => {
-              return (
-                <ActionAreaCard key={index} people={people} />
-              )
-            })
-            : 
-            <>
-              <Typography>
-                There are no people!
-              </Typography>
-              <Button sx={{ m: 1 }} variant="contained" onClick={ () => postNewRecord() }>Add Record!</Button>
-            </>
-        }
+        <Typography variant="h5" component="h3" textAlign="center" gutterBottom>
+          A sweet as game for some cool people to play on mobile
+          Ioana love it!
+        </Typography>
+        <Typography style={{ margin: '40% 0 0 0' }}>
+          <i>Ioana said she loved it!</i>
+        </Typography>
+        <Rating name="simple-controlled" value={5} />
+        <Typography style={{ margin: '10% 0 0 0' }}>
+          <i>Ioana's friend said she loved it!</i>
+        </Typography>
+        <Rating name="simple-controlled" value={5} />
+        <Typography style={{ margin: '10% 0 0 0' }}>
+          <i>Ioana's other friend said she loved it!</i>
+        </Typography>
+        <Rating name="simple-controlled" value={5} />
         <Box sx={{ display: { xs: 'none', sm: 'block' } }} component={Link} noLinkStyle href="/about">
           Go to the about page
         </Box>

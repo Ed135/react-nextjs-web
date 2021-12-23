@@ -21,7 +21,7 @@ function RenderNames(props: any) {
   }
 }
 
-const About: NextPage = () => {
+const Info: NextPage = () => {
   const [responseText, setResponseText] = React.useState([{name: "", age: ""}])  
   
   const getAboutInfo = async(url: string): Promise<void> => {
@@ -61,4 +61,4 @@ const About: NextPage = () => {
   );
 };
 
-export default About;
+export default Info;
