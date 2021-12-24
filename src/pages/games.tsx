@@ -40,7 +40,7 @@ const Info: NextPage = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          Additional Info
+          Games Page
         </Typography>
         <RenderNames info={responseText} />
         <Box maxWidth="sm">
@@ -48,7 +48,7 @@ const Info: NextPage = () => {
             Go to the about page
           </Box>
           <Button variant="contained" color="secondary" onClick={() => getAboutInfo('/api/info')} style={{ marginLeft: '4px' }}>
-            Hi Team Button
+            Hi Team Games Button
           </Button>
         </Box>
       </Box>

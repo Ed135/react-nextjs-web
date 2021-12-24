@@ -2,30 +2,32 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { supabase } from '../../../utils/superbaseClient'
 
-type Data = {
-  name: string;
-  age: string;
-};
-
-type Person = {
-  name: string;
-  age: string;
-}
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const post = await supabase
+    const createPlayer = await supabase
       .from('players')
       .insert([
         req.body
       ])      
 
-    res.status(200).json(post);
-  } else {
-    const players = await supabase
-      .from('players')
-      .select('name, age')
-
-    res.status(200).json(players);
+    return res.status(200).json(createPlayer);
   }
+
+  if (req.method === 'DELETE') {
+    const deletePlayer = await supabase
+      .from('players')
+      .delete()
+      .match(
+        req.body
+      )
+
+    return res.status(200).json(deletePlayer)
+  }
+
+  const players = await supabase
+    .from('players')
+    .select('name, age')
+
+  return res.status(200).json(players);
+  
 }

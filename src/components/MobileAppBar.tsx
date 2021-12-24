@@ -30,7 +30,7 @@ export default function FixedBottomNavigation(props: { children: any}) {
         >
           <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} href="/" />
           <BottomNavigationAction label="Players" icon={<PeopleIcon />} component={Link} href="/players" />
-          <BottomNavigationAction label="Games" icon={<VideogameAssetIcon />} component={Link} href="/about" />
+          <BottomNavigationAction label="Games" icon={<VideogameAssetIcon />} component={Link} href="/games" />
           <BottomNavigationAction label="Info" icon={<HelpCenterIcon />} component={Link} href="/info" />
         </BottomNavigation>
       </Paper>
