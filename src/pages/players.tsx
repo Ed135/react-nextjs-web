@@ -155,7 +155,7 @@ const Players: NextPage = (props) => {
             onChange={handleChange}
           />
         </Box>
-        <Button sx={{ m: 1 }} variant="contained" onClick={ () => postNewRecord(inputDetails) }>Add Player!</Button>
+        <Button sx={{ m: 1 }} variant="contained" onClick={ () => postNewRecord(inputDetails) } disabled={ !inputDetails.name || !inputDetails.age }>Add Player!</Button>
         <Divider />
         {
           data?.data?.length > 0 ?
