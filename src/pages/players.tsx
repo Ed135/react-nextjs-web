@@ -78,6 +78,7 @@ function ActionAreaCard(props: {people: any}) {
 
 const Players: NextPage = (props) => {
   const [inputDetails, setInputDetails] = React.useState({name: "", age: ""})
+  const { enqueueSnackbar } = useSnackbar();
 
   const classes = useStyles(props);
 
@@ -95,6 +96,8 @@ const Players: NextPage = (props) => {
       },
       body: JSON.stringify(newPlayer)
     })
+
+    enqueueSnackbar(`successfully created player "${newPlayer.name}`, { variant: 'success' });
     return response.json()
   }
 
