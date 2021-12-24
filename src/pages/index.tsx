@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <Typography variant="h5" component="h3" textAlign="center" gutterBottom>
           A sweet as game for some cool people to play on mobile!
         </Typography>
-        <Typography style={{ margin: '40% 0 0 0' }}>
+        <Typography style={{ margin: '30% 0 0 0' }}>
           <i>Ioana said she loved it!</i>
         </Typography>
         <Rating name="simple-controlled" value={5} />
