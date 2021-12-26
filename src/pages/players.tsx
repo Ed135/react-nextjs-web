@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import useSWR from 'swr'
 import type { NextPage } from 'next';
 import { useSnackbar } from 'notistack';
@@ -45,8 +45,10 @@ function ActionAreaCard(props: {people: any}) {
       body: JSON.stringify({ 'name': name, 'age': age })
     })
 
-    enqueueSnackbar(`successfully deleted "${name}"`, { variant: 'success' });
-    return response.json()
+    if (response.status < 300) {
+      enqueueSnackbar(`successfully deleted "${name}"`, { variant: 'success' });
+      return response.json()
+    }
   }
 
   return (
@@ -96,9 +98,10 @@ const Players: NextPage = (props) => {
       },
       body: JSON.stringify(newPlayer)
     })
-
-    enqueueSnackbar(`successfully created player "${newPlayer.name}`, { variant: 'success' });
-    return response.json()
+    if (response.status < 300) {
+      enqueueSnackbar(`successfully created player "${newPlayer.name}`, { variant: 'success' });
+      return response.json()
+    }
   }
 
   const handleChange = (event: any) => {

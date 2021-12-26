@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router'
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
@@ -6,6 +8,12 @@ import Box from '@mui/material/Box';
 import Link from '../components/Link';
 
 const Home: NextPage = () => {
+  const router = useRouter()
+  useEffect(() => {
+    // Prefetch the dashboard page
+    router.prefetch('/dashboard')
+  })
+
   return (
     <Container>
       <Box
