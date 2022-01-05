@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Link from '../components/Link';
 
 function RenderNames(props: any) {
   const { info } = props;
@@ -33,6 +32,7 @@ const Info: NextPage = () => {
       <Box
         sx={{
           my: 4,
+          marginTop: 5,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',

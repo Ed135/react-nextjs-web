@@ -64,7 +64,7 @@ function ActionAreaCard(props: {people: any}) {
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {name} are a widespread group of squamate reptiles, with over 6,000
+          {name} are a widespread group of reptiles, with over 6,000
           species, ranging across all continents except Antarctica, with an age
           of: {age}.
         </Typography>
@@ -125,6 +125,7 @@ const Players: NextPage = (props) => {
       <Box
         sx={{
           my: 4,
+          marginTop: 5,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',

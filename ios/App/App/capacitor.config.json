@@ -1,0 +1,9 @@
+{
+	"appId": "example.app.rentz",
+	"appName": "rentz",
+	"webDir": "out",
+	"bundledWebRuntime": false,
+	"server": {
+		"url": "http://localhost:3000"
+	}
+}

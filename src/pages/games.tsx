@@ -33,6 +33,7 @@ const Info: NextPage = () => {
       <Box
         sx={{
           my: 4,
+          marginTop: 5,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
