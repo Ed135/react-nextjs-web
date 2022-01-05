@@ -84,7 +84,7 @@ const Players: NextPage = (props) => {
 
   const classes = useStyles(props);
 
-  const { data, error } = useSWR('/api/players', fetcher)
+  const { data, error } = useSWR('/api/players', fetcher, { refreshInterval: 500 })
 
   if (error) return <div className={classes.centerDiv}>Failed to load make this a failure component</div>
   if (!data) return <div className={classes.centerDiv}><CircularProgress size={90} thickness={5} /></div>
